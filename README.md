@@ -1,7 +1,7 @@
 # 🌦 Weather App – Live Location Weather Tracker
 
 🚀 **Live Demo:**
-🔗 [Live Demo](https://webdevzone.in)
+🔗 [Live Demo](https://weather.webdevzone.in)
 
 🚀 A modern and responsive weather application that shows real-time weather data based on live location or searched city.
 Built to practice API integration, geo-location, and dynamic UI updates.

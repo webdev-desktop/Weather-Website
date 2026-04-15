@@ -109,13 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           const { latitude, longitude } = pos.coords;
 
+          showLoader();
           const data = await fetchWeather(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api}&units=metric`
           );
 
           updateUI(data);
+          hideLoader();
         } catch {
           fetchDefault();
+          hideLoader();
         }
       }, fetchDefault);
     } else {
@@ -140,11 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${getCity()}&appid=${api}&units=metric`
       );
       updateUI(data);
+      hideLoader();
     } catch {
       toast("City not found 😬");
-    } finally {
       hideLoader();
     }
+    hideLoader();
   };
 
   //* Search
@@ -154,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!value) return;
 
     try {
+      showLoader();
       const data = await fetchWeather(
         `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${api}&units=metric`
       );
@@ -163,10 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       searchCity.value = "";
       updateUI(data);
+      hideLoader();
     } catch {
       console.log(searchCity.value);
       toast(`${searchCity.value}\n❌ City not found`);
       searchCity.value = "";
+      hideLoader();
     }
   };
 
